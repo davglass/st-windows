@@ -1,24 +1,12 @@
-/**
- *  SmartDevice for Windows
- *
- *  Copyright 2015 Dav Glass (davglass@gmail.com)
- *
- *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License. You may obtain a copy of the License at:
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
- *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
- *  for the specific language governing permissions and limitations under the License.
- *
- */
+//Thing is used while a device is in the process of being joined
 
 metadata {
+    // Automatically generated. Make future change here.
     definition (name: "Windows", namespace: "davglass", author: "Dav Glass") {
         capability "Contact Sensor"
-        command "count", ["number"]    
-        attribute "value", "number"
+        command "count", ["number", "number"]
+        
+        attribute "value", "string"
     }
     tiles {
         standardTile("contact", "device.contact", width: 1, height: 1) {
@@ -28,17 +16,22 @@ metadata {
         valueTile("NumberTile", "device.value", decoration: "flat") {
             state "items", label:'${currentValue}'
         }
+
         main "contact"
         details(["contact", "NumberTile"])
     }
 }
 
+// Parse incoming device messages to generate events
 def parse(String description) {
+    // None
 }
 
-def count(i) {
-    def status = ((i == 0) ? "closed" : "open");
-    log.debug "Count: ${i}, Status: ${status}"
+
+def count(open, closed) {
+    def status = ((open == 0) ? "closed" : "open");
+    log.debug "Open: ${open}, Closed: ${closed}, Status: ${status}"
     sendEvent(name: "contact", value: status)
-    sendEvent(name: "value", value: i)
+    sendEvent(name: "value", value: "${open}/${closed}")
 }
+

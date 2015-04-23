@@ -1,7 +1,7 @@
 /**
  *  Are my Windows Open?
  *
- *  Copyright 2015 Dav Glass (davglass@gmail.com)
+ *  Copyright 2015 Dav Glass
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -21,8 +21,8 @@ definition(
     category: "My Apps",
     iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
     iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
-    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png"
-)
+    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png")
+
 
 preferences {
     section("Which Windows?") {
@@ -57,6 +57,7 @@ def handler(evt) {
             opened++;
         }
     }
-    log.debug "There are ${opened} windows open.."
-    thing.count(opened);
+    def closed = windows.size() - opened;
+    log.debug "There are ${opened} windows open and ${closed} windows closed.."
+    thing.count(opened, closed);
 }

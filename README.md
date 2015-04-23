@@ -1,9 +1,9 @@
 Are My Windows Open?
 ===================
 
-This is a little hack that I out together to play with SmartDevice types and doing different things with them.
+This is a little hack that I put together to play with SmartDevice types and doing different things with them.
 
-It takes a list of Open/Closed censors (for my windows) and creates a "Thing" that shows if any of them are open. If
+It takes a list of Open/Closed sensors (for my windows) and creates a "Thing" that shows if any of them are open. If
 they are then it will show that the "Thing" is open. It will also display the "count" of the number of them that are
 open.
 
