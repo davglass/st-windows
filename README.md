@@ -9,6 +9,9 @@ open.
 
 It's just a quick way to see how many windows in the house are open.
 
+![all-windows-closed](https://cloud.githubusercontent.com/assets/32551/7288112/895674b4-e922-11e4-8439-c0190508ba26.png)
+![all-windows-open](https://cloud.githubusercontent.com/assets/32551/7288111/89565218-e922-11e4-830b-614200730478.png)
+
 Install Device
 --------------
 
